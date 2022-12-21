@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>profile_fix</title>
+  <meta
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+          name="viewport">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+        crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+  <!-- Daum adress API -->
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <style>
+
+
+
+    .bg-light {
+      height: 1100px;
+      padding-top: 15px;
+    }
+
+    .container.py-4 {
+      margin: 0 auto;
+      width: 503px;
+    }
+
+    #userProfile img {
+      display: flex;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-left: 160px;
+      margin-right: 66px;
+      padding: 6px;
+    }
+
+    .fileBox label {
+      display: inline-block;
+      padding: .5em .75em;
+      color: #fff;
+      font-size: inherit;
+      line-height: normal;
+      vertical-align: middle;
+      background-color: #007bff;
+      cursor: pointer;
+      border-color: #007bff;
+      border-bottom-color: #e2e2e2;
+      border-radius: .25em;
+      margin-left: 160px;
+    }
+
+    .fileBox input[type="file"] {  /* 파일 필드 숨기기 */
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip:rect(0,0,0,0);
+      border: 0;
+    }
+
+  </style>
+
+</head>
+<body>
+<section class="bg-light">
+  <div class="container py-4">
+    <div id="userProfile">
+      <img class="mb-3" th:src="${vo.storedFileName}" width="200" height="200">
+    </div>
+    <form id="profileFixFrm">
+    <div class="form-group">
+      <div class="fileBox">
+      <label for="profileImg">프로필 사진 수정</label>
+      <input type="file" id="profileImg" name="profileImg">
+      </div>
+    </div>
+      <div class="form-group">
+        <input type="hidden" id="userNum" name="userNum" th:value="${vo.userNum}">
+        <label for="userName" class="form-label-mt-4">이름</label>
+        <input type="text" class="form-control" id="userName" name="userName" th:value="${vo.userName}">
+      </div>
+      <div class="form-group">
+        <label for="profileIntro" class="form-label-mt-4">프로필 소개</label>
+        <input type="text" id="profileIntro" name="profileIntro" class="form-control" th:value="${vo.profileIntro}">
+      </div>
+    </form>
+      <div class="row" style="margin-top: 5rem">
+        <div>
+          <div class="col-md-12" style="margin-left: 340px;">
+            <button type="button" id="commitBtn" class="btn btn-primary" style="margin-right: 5px">변경</button>
+            <button type="button" class="btn btn-secondary" onclick="location.href='/profile/home?userNum='+$('#userNum').val()">취소</button>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+
+</body>
+<script>
+
+  function validated() {
+    const userName = $('#userName');
+    const intro = $('#profileIntro');
+
+    if($.trim(userName.val()).length === 0) {
+      alert('제목을 입력하십시오.');
+      userName.focus();
+      return false;
+    }
+    if($.trim(intro.val()).length === 0){
+      alert('내용을 입력하십시오.');
+      intro.focus();
+      return false;
+    }
+
+    return true;
+  }
+
+  function initBtn() {
+
+    //자바 스크립트
+    const commitBtn = document.querySelector('#commitBtn');
+
+    if (typeof commitBtn !== 'undefined') {
+      commitBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        // 이벤트 동작 방지 (여러번 눌리는것을 방지)
+        // addEventListener는 데이터를 받아오는 화면 전환일때 데이터 중복 처리를 막기 위함
+        if(validated()) {
+          //폼을 jquery 객체로 바꾸면 배열값이 0임
+          const profileFixFrom = $('#profileFixFrm')[0];
+
+          //폼 전체를 데이터 객채화 해줌
+          const formData = new FormData(profileFixFrom);
+          console.log(formData.values());
+
+          //ajax로 파일 데이터 전송하기
+
+          $.ajax({
+            url: '/profile/profileFix',
+            type: "post",
+            data: formData,
+            dataType: 'json',
+            enctype : 'multipart/form-data',
+            contentType: false, //전송되는 문서의 양식(false면 enctype으로 데이터가 날아감)
+            processData: false, //ajax 넘길 때 전송되는 데이터 파라메터(별도의 데이터 x)
+          }).done(function(data){
+
+            if(data.resultCode === 200) {
+              alert('프로필이 수정 되었습니다.');
+            }else {
+              alert('프로필 수정 실패.');
+            }
+
+            location.href='/profile/home?userNum='+$('#userNum').val();
+
+          }).fail(function (xhr, error, status){
+            console.log(error);
+          })
+        }
+      });
+    }
+
+  }
+
+  $(document).ready(function() {
+    initBtn();
+  });
+
+</script>
+</html>

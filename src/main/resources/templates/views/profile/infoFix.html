@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>profile_fix</title>
+  <meta
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+          name="viewport">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+        crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+  <!-- Daum adress API -->
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <style>
+
+    .modal {
+      text-align: center;
+    }
+
+    @media screen and (min-width: 768px) {
+      .modal:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height: 100%;
+      }
+    }
+
+    .modal-dialog {
+      width: 60%;
+      height: 60%;
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .modal-content {
+      height: auto;
+      min-height: 60%;
+    }
+
+    .bg-light {
+      height: 1100px;
+      padding-top: 15px;
+    }
+
+    .container.py-4 {
+      margin: 0 auto;
+      width: 503px;
+    }
+    .bir_yy,.bir_mm,.bir_dd {
+      width:160px;
+      display:table-cell;
+    }
+    .bir_mm+.bir_dd, .bir_yy+.bir_mm, .phone1+phone2, .phone2+phone3{
+      padding-left:10px;
+    }
+
+    #userProfile img {
+      display: flex;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-left: 160px;
+      margin-right: 66px;
+      padding: 6px;
+    }
+
+  </style>
+
+</head>
+<body>
+<section class="bg-light">
+  <div class="container py-4">
+
+    <form id="profileFixFrm" method="post" action="/profile/fix" enctype="multipart/form-data">
+    <!--  onsubmit="return false;" 엔터를 치면 자동적으로 formsubmit이 날라가는걸 막아줌 -->
+    <!-- 우리는 formSubmit을 날리지 않고 ajax통신을 통해서 데이터를 주고받는 기능을 만들었기 때문 -->
+
+      <div class="form-group">
+        <label for="userId" class="form-label-mt-4">아이디</label>
+        <input type="text" class="form-control" id="userId" name="userId">
+      </div>
+      <div class="form-group">
+        <label for="prePasswd" class="form-label-mt-4">이전 비밀번호</label>
+        <input type="text" class="form-control" id="prePasswd" name="prePasswd">
+      </div>
+      <div class="form-group">
+        <label for="newPasswd" class="form-label-mt-4">새비밀번호</label>
+        <input type="text" class="form-control" id="newPasswd" name="newPasswd">
+      </div>
+      <div class="form-group">
+        <label for="confirmPasswd" class="form-label-mt-4">비밀번호 확인</label>
+        <input type="text" class="form-control" id="confirmPasswd" name="confirmPasswd">
+      </div>
+      <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
+        <button class="btn btn-secondary" onclick="$('#changePasswd').modal('show');">비밀번호 변경</button>
+      </div>
+      <div class="form-group">
+        <label for="userName" class="form-label-mt-4">이름</label>
+        <input type="text" class="form-control" id="userName" name="userName">
+      </div>
+      <div class ="form-group">
+        <label class="form-label-mt-4">생년월일</label>
+        <div class="bir_yy">
+                		<span class="ps_box">
+                			<input type="text" class="form-control" id="yy" placeholder="년(4자)" maxlength="4">
+                		</span>
+        </div>
+        <div class="bir_mm">
+          <select id="mm" name="mm" class="form-control">
+            <option value="월" selected="selected">월</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+        </div>
+        <div class="bir_dd">
+                		<span class="ps_box">
+                			<input type ="text" class="form-control" id ="dd" placeholder="일" maxlength="2">
+                		</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="userGender" class="form-label-mt-4">성별</label>
+        <select id="userGender" name="userGender" class="form-control">
+          <option value="남자" selected="selected">남자</option>
+          <option value="여자">여자</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="userId" class="form-label-mt-4">전화번호</label>
+        <div class="row">
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="01011112222">
+          </div>
+          <div>
+            <label></label>
+            <button type="button" class="btn btn-secondary" id="sendConfirm" name="sendConfirm">인증번호 발송</button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="userId" class="form-label-mt-4">인증번호</label>
+        <div class="row">
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="confirmNum" name="confirmNum">
+          </div>
+          <div>
+            <label></label>
+            <button type="button" class="btn btn-secondary" id="checkNum" name="checkNum">인증번호 확인</button>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 5rem">
+        <div>
+          <div class="col-md-12" style="margin-left: 340px;">
+            <button type="button" id="commitBtn" class="btn btn-primary" style="margin-right: 5px">변경</button>
+            <button type="button" class="btn btn-secondary" onclick="location.href='/profile/home'">취소</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+
+</body>
+<script>
+  function initBtn() {
+
+    //자바 스크립트
+    const commitBtn = document.querySelector('#commitBtn'); //javascript객체(돈객체?)
+
+    if (typeof commitBtn !== 'undefined') {
+      commitBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        // 이벤트 동작 방지 (여러번 눌리는것을 방지)
+        // addEventListener는 데이터를 받아오는 화면 전환일때 데이터 중복 처리를 막기 위함
+        if(validated()) {
+          //폼을 jquery 객체로 바꾸면 배열값이 0임
+          const profileFixFrom = $('#profileFixFrm')[0];
+
+          //폼 전체를 데이터 객채화 해줌
+          const formData = new FormData(profileFixFrom);
+
+          //ajax로 파일 데이터 전송하기
+
+          $.ajax({
+            url: '/profile/fix',
+            type: "post",
+            data: formData,
+            dataType: 'json',
+            enctype : 'multipart/form-data',
+            contentType: false, //전송되는 문서의 양식(false면 enctype으로 데이터가 날아감)
+            processData: false, //ajax 넘길 때 전송되는 데이터 파라메터(별도의 데이터 x)
+          }).done(function(data){
+
+            if(data.resultCode === 200) {
+              alert('프로필이 수정 되었습니다.')
+            }else {
+              alert('프로필 수정 실패.');
+            }
+
+            location.href='/profile/home'
+
+          }).fail(function (xhr, error, status){
+            console.log(error);
+          })
+        }
+      });
+    }
+
+  }
+
+  $(document).ready(function() {
+    initBtn();
+  });
+
+</script>
+</html>

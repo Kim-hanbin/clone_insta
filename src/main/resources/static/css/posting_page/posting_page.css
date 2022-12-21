@@ -1,0 +1,218 @@
+@charset "utf-8";
+
+body{
+    margin: 0 auto;
+    width: 100%;
+    height : 100%;
+}
+
+/* header start */
+header{
+    height : 76px;
+    width: 100%;
+}
+.wrap {
+    background-color: #fafafa;
+    margin: 0 auto;
+}
+
+.align-center { text-align: center; }
+
+.main-navigation {
+    position: fixed;
+    height: 76px;
+    width: 100%;
+    border-bottom: 1px solid #e6e6e6;
+    background-color: #fff;
+    font-family: ‘Noto Sans KR’, sans-serif, ’dotum’, ’돋움’,
+    ’Apple SD Gothic Neo’;
+}
+
+
+.main-navigation .nav-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1000px;
+    height: 76px;
+    margin: 0 auto;
+}
+
+.main-navigation .nav-box .logo {
+    display: flex;
+}
+
+.main-navigation .nav-box .logo i {
+    margin-right: 10px;
+    font-size: 25px;
+}
+
+.main-navigation .nav-box .logo h1 {
+    font-size: 25px;
+}
+.search-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #949BA0;
+    padding: 10px;
+    border-radius: 40px;
+}
+.search-btn {
+    color: #EDEDED;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #949BA0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-txt {
+    float: left;
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    line-height: 40px;
+    width: 0;
+    transition: 0.5s;
+    font-family: ‘Noto Sans KR’, sans-serif, ’dotum’, ’돋움’,
+    ’Apple SD Gothic Neo’;
+}
+
+.search-box:hover > form .search-txt {
+    width: 200px;
+}
+
+.search-box:hover > form .search-btn {
+    background: #464E54;
+}
+/* header end */
+/*section start */
+.posting {
+    width: 600px;
+    height: auto;
+    background-color: #fff;
+    border: 1.5px solid #e6e6e6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#menu_title {
+    display: block;
+    width: 500px;
+    text-align: left;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+}
+.today{
+    text-align: center;
+}
+
+.form {
+    background-color: #ffffff;
+    margin: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align:center;
+    font-family: ‘Noto Sans KR’, sans-serif, ’dotum’, ’돋움’,
+    ’Apple SD Gothic Neo’;
+}
+
+.emoji_text {
+    border: 1px solid #ddd;
+    width: 500px;
+    height: 50px;
+    font-size: 25px;
+    font-family: ‘Noto Sans KR’, sans-serif, ’dotum’, ’돋움’,
+    ’Apple SD Gothic Neo’;
+}
+.textarea_field {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px;
+    margin: 3px 0;
+    font-size: 14px;
+    width: 500px;
+    height: 500px;
+    font-family: ‘Noto Sans KR’, sans-serif, ’dotum’, ’돋움’,
+    ’Apple SD Gothic Neo’;
+}
+
+.write_button {
+    background-color: #475d9f;
+    border: 1px solid #323f6b;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 15px;
+    font-family: ‘Noto Sans KR’, sans-serif, ’dotum’, ’돋움’,
+    ’Apple SD Gothic Neo’;
+}
+
+.go_menu {
+    background-color: #d3d3d3;
+    border: 1px solid #323f6b;
+    color: #000000;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 15px;
+    font-family: ‘Noto Sans KR’, sans-serif, ’dotum’, ’돋움’,
+    ’Apple SD Gothic Neo’;
+}
+
+.tr{
+    background-color: #d3d3d3;
+    border: 1px solid #323f6b;
+    color: #000000;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 15px;
+    font-family: ‘Noto Sans KR’, sans-serif, ’dotum’, ’돋움’,
+    ’Apple SD Gothic Neo’;
+}
+
+/* aside start*/
+ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    width: 500px;
+    background: #ffffff;
+    height: 100%;
+    overflow: auto;
+    position: fixed;
+    font-family: ‘Noto Sans KR’, sans-serif, ’dotum’, ’돋움’,
+    ’Apple SD Gothic Neo’;
+}
+
+li a {
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    color: #000;
+    font-weight: bold;
+    font-family: ‘Noto Sans KR’, sans-serif, ’dotum’, ’돋움’,
+    ’Apple SD Gothic Neo’;
+}
+
+li a.home {
+    background : #333;
+    color: #fff;
+}
+/* aside end*/
+/* section end */

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <title>Title</title>
+  <style>
+    .modal-body li{
+      list-style: none;
+      margin: 10px 0px 0px 10px;
+
+    }
+
+    .chatRoom{
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .chatRoom-friend-name{
+      text-align:-moz-center;
+    }
+
+  </style>
+</head>
+<body>
+<!-- Modal -->
+<div th:fragment="chatmodal" style="background-color: transparent; border:0 none; z-index: 10000;" class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalScrollableTitle">채팅목록</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="chatRoomContainer" style="display: block">
+        <div id="modal-body" class="modal-body">
+          <ul>
+            <li>
+              <div class="chatRoom" style="border: 2px solid lightgrey; width:100%; height:90px;">
+                <div class="chatRoom-friend-name">
+                  <span>채팅방1</span>
+                </div>
+                <button type="button" style="background-color: #BCF5A9;" class="btn btn-outline-success" onclick="openChatRoom()">입장</button>
+              </div>
+            </li>
+            <li>
+              <div class="chatRoom" style="border: 2px solid lightgrey; width:100%; height:90px;">
+                <div class="chatRoom-friend-name">
+                  <span>채팅방2</span>
+                </div>
+                <button type="button" style="background-color: #BCF5A9;" class="btn btn-outline-success" onclick="openChatRoom()">입장</button>
+              </div>
+            </li>
+            <li>
+              <div class="chatRoom" style="border: 2px solid lightgrey; width:100%; height:90px;">
+                <div class="chatRoom-friend-name">
+                  <span>채팅방3</span>
+                </div>
+                <button type="button" style="background-color: #BCF5A9;" class="btn btn-outline-success" onclick="openChatRoom()">입장</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="freindChatRoom" style="display: none">
+      <div>
+          <span>
+            안녕 채팅방이 열렸어!!
+            나도 이렇게 될줄 몰랐어.
+            너무 그렇게 보진 마.
+            슬프니까~
+          </span>
+      </div>
+    </div>
+      <div class="modal-footer">
+        <textarea id="article" style="width:100%; resize: none; display: none"></textarea>
+        <button id="sendMessage" type="button" class="btn btn-secondary" onclick="sendMassage()" >보내기</button>
+        <button id="cancelMessage" type="button" class="btn btn-primary">취소</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    function openChatRoom(){
+      const chatRoomContainer = document.querySelector('#chatRoomContainer');
+      const freindChatRoom = document.querySelector('#freindChatRoom');
+      const article = document.querySelector('#article');
+
+      if(chatRoomContainer.style.display === "block"){
+        chatRoomContainer.style.display = "none";
+      }
+      else{
+        chatRoomContainer.style.display = "block";
+      }
+
+      if(freindChatRoom.style.display === "none"){
+        freindChatRoom.style.display = "block";
+      }
+      else{
+        freindChatRoom.style.display = "none";
+      }
+
+      if(article.style.display==="none"){
+        article.style.display="block"
+      }
+      else{
+        article.style.display="none"
+      }
+    }
+
+    function getChatRoomList() {
+      $.ajax({
+        type : 'post',
+        dataType : 'json',
+        url : '/main/view',
+        data : 1
+      }).done(function(data){
+        console.log('그리기')
+        drawTables(data);
+
+      }).fail(function(xhr, status, exp){
+        console.log(status);
+      });
+    }
+
+    function drawTables(list) {
+      const div = $('#modal-body');
+      //비우기
+      div.empty();
+
+      console.log(list);
+
+      for(data of list) {
+        const ul = $('<ul></ul>')
+        const li = $('<li></li>')
+        const firstDiv = $('<div class="chatRoom" style="border: 2px solid lightgrey; width:100%; height:90px;"></div>')
+        const secondDiv = $('<div class="chatRoom-friend-name"></div>')
+        const thirdSpan = $('<span></span>')
+        const fourthButton = $('<button type="button" style="background-color: #BCF5A9;" class="btn btn-outline-success"\n' +
+                '                      onclick="openChatRoom()"></button>')
+
+        //li 밑에 계단식으로 채워 넣기
+
+        li.append(firstDiv);
+        firstDiv.append(secondDiv);
+        secondDiv.append(thirdSpan.append(data.chatTitle));
+        firstDiv.append(fourthButton.append(data.chatId)  );
+        //td를 tr에 추가하기
+        //tr.append(rnTd);
+        //tr.append(titleTd);
+        //tr.append(writerTd);
+        //tr.append(updateTd);
+        //tr.append(countTd);
+
+        //tbody에 tr 추가
+        ul.append(li);
+      }
+    }
+
+    $(document).ready(function(){
+      console.log("준비");
+      getChatRoomList();
+
+    });
+  </script>
+</div>
+</body>
+</html>

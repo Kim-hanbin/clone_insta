@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.prd.web.login.mapper.LoginMapper">
+
+    <insert  id="insertUserInfo" parameterType="loginVO">
+        insert into user_info(user_id,
+                              user_name,
+                              user_birth,
+                              user_gender,
+                              user_phone,
+                              user_addr1,
+                              user_addr2,
+                              user_passwd)
+        values (#{userId}, #{userName}, #{userBirth}, #{userGender}, #{userPhone}, #{userAddr1}, #{userAddr2}, #{userPasswd})
+    </insert>
+
+    <insert  id="insertProfileInfo" parameterType="loginVO">
+        insert into profile_info(user_id,
+                                 user_name,
+                                 user_num
+                              )
+        values (#{userId}, #{userName}, #{userNum})
+    </insert>
+
+    <select id="userIdCheck" parameterType="map" resultType="int">
+
+        select count(*) from user_info where user_id = #{userId}
+
+    </select>
+
+    <select id="getUserInfo" parameterType="map" resultType="loginVO">
+        select user_num,
+               user_id,
+               user_name,
+               user_birth,
+               user_gender,
+               user_phone,
+               user_addr1,
+               user_addr2,
+               user_passwd,
+               user_role_id
+        from user_info
+        where user_id = #{userId}
+    </select>
+
+
+</mapper>

@@ -1,0 +1,573 @@
+div.modal-post {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.65);
+  align-items: center;
+  justify-content: center;
+  z-index: 1; }
+  div.modal-post > svg.post-close {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 18px;
+    right: 18px;
+    cursor: pointer; }
+  div.modal-post > div.wrapper {
+    display: flex;
+    position: relative;
+    margin-top: 3%;
+    margin-left: 15%;
+    width: 870px;
+    height: 600px;
+    background-color: #ffffff;
+    flex-direction: row; }
+    div.modal-post > div.wrapper > div.image {
+      position: relative;
+      width: 600px;
+      height: 100%;
+      align-items: center; }
+      div.modal-post > div.wrapper > div.image >img {
+        position: absolute;
+        width: 100%;
+        height: 100%; }
+      div.modal-post > div.wrapper > div.image > div.heart-wrapper {
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        text-align: center; }
+        div.modal-post > div.wrapper > div.image > div.heart-wrapper > div.heart {
+          position: absolute;
+          background-image: url("../images/icon.png");
+          width: 120px;
+          height: 120px; }
+    div.modal-post > div.wrapper > div.post-content {
+      display: flex;
+      height: 100%;
+      flex: 1;
+      flex-direction: column; }
+      div.modal-post > div.wrapper > div.post-content > div.user {
+        display: flex;
+        width: 100%;
+        height: 72px;
+        border-bottom: 1px #dbdbdb solid;
+        flex-direction: row;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 20px 20px; }
+        div.modal-post > div.wrapper > div.post-content > div.user > img {
+          width: 32px;
+          height: 32px;
+          border-radius: 20px;
+          cursor: pointer; }
+        div.modal-post > div.wrapper > div.post-content > div.user > a {
+          font-size: 12px;
+          font-family: 'nsM';
+          padding: 0px 0px 0px 14px;
+          cursor: pointer; }
+        div.modal-post > div.wrapper > div.post-content > div.user > span {
+          font-size: 12px;
+          font-family: 'nsM'; }
+        div.modal-post > div.wrapper > div.post-content > div.user > button.follow {
+          color: #2e9afe;
+          font-size: 14px;
+          font-family: 'nsM';
+          background-color: transparent;
+          outline: none;
+          cursor: pointer; }
+        div.modal-post div.wrapper div.post-content div.user svg.etc {
+          width: 16px;
+          height: 16px;
+          fill: #262626;
+          cursor: pointer; }
+      div.modal-post div.wrapper div.post-content div.rest {
+        display: flex;
+        width: 100%;
+        height: calc(100% - 73px);
+        flex-direction: column; }
+        div.modal-post div.wrapper div.post-content div.rest div.text {
+          width: 100%;
+          height: calc(100% - 32px);
+          box-sizing: border-box;
+          overflow-y: scroll;
+          padding: 20px; }
+          div.modal-post div.wrapper div.post-content div.rest div.text::-webkit-scrollbar {
+            display: none; }
+          div.modal-post div.wrapper div.post-content div.rest div.text div.top,
+          div.modal-post div.wrapper div.post-content div.rest div.text div.comment-container {
+            display: flex;
+            width: 100%;
+            margin-bottom: 20px; }
+            div.modal-post div.wrapper div.post-content div.rest div.text div.top img,
+            div.modal-post div.wrapper div.post-content div.rest div.text div.comment-container img {
+              width: 32px;
+              height: 32px;
+              border-radius: 20px;
+              margin-right: 12px;
+              cursor: pointer; }
+            div.modal-post div.wrapper div.post-content div.rest div.text div.top div.posting,
+            div.modal-post div.wrapper div.post-content div.rest div.text div.comment-container div.posting {
+              position: relative;
+              flex: 1; }
+              div.modal-post div.wrapper div.post-content div.rest div.text div.top div.posting div a.id,
+              div.modal-post div.wrapper div.post-content div.rest div.text div.comment-container div.posting div a.id {
+                font-size: 12px;
+                font-family: 'nsM';
+                padding-right: 4px;
+                cursor: pointer; }
+              div.modal-post div.wrapper div.post-content div.rest div.text div.top div.posting div p.comment,
+              div.modal-post div.wrapper div.post-content div.rest div.text div.comment-container div.posting div p.comment {
+                font-size: 14px;
+                font-family: 'nsL';
+                padding-right: 34px; }
+              div.modal-post div.wrapper div.post-content div.rest div.text div.top div.posting div p,
+              div.modal-post div.wrapper div.post-content div.rest div.text div.comment-container div.posting div p {
+                font-size: 14px;
+                font-family: 'nsL';
+                padding-right: 4px; }
+              div.modal-post div.wrapper div.post-content div.rest div.text div.top div.posting div a.tag,
+              div.modal-post div.wrapper div.post-content div.rest div.text div.comment-container div.posting div a.tag {
+                font-size: 14px;
+                font-family: 'nsL';
+                color: #00376b;
+                background-color: #ffffff;
+                margin-right: 6px;
+                cursor: pointer; }
+              div.modal-post div.wrapper div.post-content div.rest div.text div.top div.posting p.time,
+              div.modal-post div.wrapper div.post-content div.rest div.text div.comment-container div.posting p.time {
+                font-size: 12px;
+                color: #dbdbdb;
+                margin: 10px 0px 4px 0px;
+                cursor: pointer; }
+              div.modal-post div.wrapper div.post-content div.rest div.text div.top div.posting div.info,
+              div.modal-post div.wrapper div.post-content div.rest div.text div.comment-container div.posting div.info {
+                display: flex; }
+                div.modal-post div.wrapper div.post-content div.rest div.text div.top div.posting div.info p.time,
+                div.modal-post div.wrapper div.post-content div.rest div.text div.comment-container div.posting div.info p.time {
+                  font-size: 13px;
+                  font-family: 'nsM';
+                  color: #dbdbdb;
+                  margin: 10px 10px 4px 0px;
+                  cursor: pointer; }
+                div.modal-post div.wrapper div.post-content div.rest div.text div.top div.posting div.info p.like,
+                div.modal-post div.wrapper div.post-content div.rest div.text div.comment-container div.posting div.info p.like {
+                  font-size: 13px;
+                  font-family: 'nsM';
+                  color: #8e8e8e;
+                  margin: 10px 10px 4px 0px;
+                  cursor: pointer; }
+                div.modal-post div.wrapper div.post-content div.rest div.text div.top div.posting div.info p.reply,
+                div.modal-post div.wrapper div.post-content div.rest div.text div.comment-container div.posting div.info p.reply {
+                  font-size: 13px;
+                  font-family: 'nsM';
+                  color: #8e8e8e;
+                  margin: 10px 0px 4px 0px;
+                  cursor: pointer; }
+              div.modal-post div.wrapper div.post-content div.rest div.text div.top div.posting button.option,
+              div.modal-post div.wrapper div.post-content div.rest div.text div.comment-container div.posting button.option {
+                display: none;
+                position: absolute;
+                width: 22px;
+                height: 22px;
+                top: -4px;
+                right: 32px;
+                font-family: 'nsB';
+                color: #8e8e8e;
+                background-color: #ffffff;
+                padding: 4px;
+                outline: none;
+                cursor: pointer; }
+              div.modal-post div.wrapper div.post-content div.rest div.text div.top div.posting svg.heart-no,
+              div.modal-post div.wrapper div.post-content div.rest div.text div.comment-container div.posting svg.heart-no {
+                display: flex;
+                position: absolute;
+                width: 14px;
+                height: 12px;
+                top: 8px;
+                right: 10px;
+                cursor: pointer; }
+              div.modal-post div.wrapper div.post-content div.rest div.text div.top div.posting svg.heart-yes,
+              div.modal-post div.wrapper div.post-content div.rest div.text div.comment-container div.posting svg.heart-yes {
+                display: none;
+                position: absolute;
+                width: 14px;
+                height: 12px;
+                top: 8px;
+                right: 10px;
+                fill: #ed4956;
+                cursor: pointer; }
+          div.modal-post div.wrapper div.post-content div.rest div.text div.center {
+            flex: 1; }
+        div.modal-post div.wrapper div.post-content div.rest div.buttons {
+          display: flex;
+          border-top: 1px solid rgba(var(--ce3, 239, 239, 239), 1);
+          padding: 14px 8px 10px 16px;
+          margin-top: 4px; }
+          div.modal-post div.wrapper div.post-content div.rest div.buttons button {
+            width: 24px;
+            height: 24px;
+            background-color: transparent;
+            margin-right: 16px;
+            outline: none;
+            cursor: pointer; }
+            div.modal-post div.wrapper div.post-content div.rest div.buttons button svg.like-yes {
+              display: none;
+              fill: #ed4956; }
+          div.modal-post div.wrapper div.post-content div.rest div.buttons button.save {
+            margin-right: 6px;
+            outline: none; }
+            div.modal-post div.wrapper div.post-content div.rest div.buttons button.save svg.save-yes {
+              display: none; }
+        div.modal-post div.wrapper div.post-content div.rest button.likes-count {
+          height: 20px;
+          background-color: transparent;
+          font-family: 'nsM';
+          text-align: start;
+          margin-bottom: 4px;
+          padding-left: 16px;
+          padding-right: 16px;
+          outline: none;
+          cursor: pointer; }
+        div.modal-post div.wrapper div.post-content div.rest div.post-date {
+          font-size: 10px;
+          line-height: 18px;
+          color: #8e8e8e;
+          letter-spacing: 0.2px;
+          padding-left: 16px; }
+        div.modal-post div.wrapper div.post-content div.rest div.comment-wrapper {
+          display: flex;
+          width: 100%;
+          min-height: 56px;
+          border-top: 1px solid rgba(var(--ce3, 239, 239, 239), 1);
+          align-items: center;
+          box-sizing: border-box;
+          margin-top: 8px;
+          padding-left: 16px;
+          padding-right: 16px; }
+          div.modal-post div.wrapper div.post-content div.rest div.comment-wrapper textarea {
+            height: 44px;
+            flex: 1;
+            font-size: 14px;
+            font-family: 'nsM';
+            color: #8e8e8e;
+            resize: none;
+            overflow: hidden;
+            box-sizing: border-box;
+            margin-right: 10px;
+            padding-top: 10px; }
+            div.modal-post div.wrapper div.post-content div.rest div.comment-wrapper textarea:focus {
+              outline: none; }
+          div.modal-post div.wrapper div.post-content div.rest div.comment-wrapper button.submit {
+            height: 100%;
+            font-family: 'nsM';
+            color: #0096f6;
+            background-color: transparent;
+            opacity: 0.3;
+            margin-top: -4px;
+            outline: none;
+            cursor: pointer; }
+    div.modal-post div.wrapper div.previous {
+      position: absolute;
+      background-image: url("../images/icon.png");
+      background-position: -186px -136px;
+      width: 30px;
+      height: 30px;
+      top: 290px;
+      left: -30px;
+      cursor: pointer; }
+    div.modal-post div.wrapper div.next {
+      position: absolute;
+      background-image: url("../images/icon.png");
+      background-position: -260px -190px;
+      width: 30px;
+      height: 30px;
+      top: 290px;
+      right: -30px;
+      cursor: pointer; }
+
+div.post-menu {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.65);
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  cursor: pointer; }
+  div.post-menu div.wrapper {
+    display: flex;
+    width: 400px;
+    max-height: 100%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    flex-direction: column;
+    align-items: center; }
+    div.post-menu div.wrapper button {
+      width: 100%;
+      min-height: 48px;
+      font-size: 14px;
+      text-align: center;
+      background-color: transparent;
+      border-top: 1px solid #dbdbdb;
+      padding: 4px 8px;
+      cursor: pointer; }
+      div.post-menu div.wrapper button:focus {
+        outline: none; }
+      div.post-menu div.wrapper button:nth-child(1) {
+        color: #ed4956;
+        border-top: none; }
+
+div.comment-report,
+div.story-report {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.65);
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  cursor: pointer; }
+  div.comment-report div.wrapper,
+  div.story-report div.wrapper {
+    display: flex;
+    width: 400px;
+    max-height: 100%;
+    background-color: #ffffff;
+    border-radius: 12px;
+    flex-direction: column;
+    align-items: center; }
+    div.comment-report div.wrapper button,
+    div.story-report div.wrapper button {
+      width: 100%;
+      min-height: 48px;
+      font-size: 14px;
+      text-align: center;
+      background-color: transparent;
+      border-top: 1px solid #dbdbdb;
+      padding: 4px 8px;
+      cursor: pointer; }
+      div.comment-report div.wrapper button:focus,
+      div.story-report div.wrapper button:focus {
+        outline: none; }
+      div.comment-report div.wrapper button:nth-child(1),
+      div.story-report div.wrapper button:nth-child(1) {
+        border-top: none; }
+      div.comment-report div.wrapper button.comment-menu,
+      div.story-report div.wrapper button.comment-menu {
+        color: #ed4956; }
+
+div.modal-story {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-color: #262626;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; }
+  div.modal-story div.wrapper {
+    display: flex;
+    position: relative;
+    width: 560px;
+    height: 100%;
+    align-items: center;
+    flex-direction: column; }
+    div.modal-story div.wrapper div.previous,
+    div.modal-story div.wrapper div.next {
+      display: none;
+      background-image: url("../images/icon.png"); }
+    div.modal-story div.wrapper:hover div.previous {
+      display: flex;
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      top: 45%;
+      left: -44px;
+      background-position: -130px -98px;
+      cursor: pointer; }
+    div.modal-story div.wrapper:hover div.next {
+      display: flex;
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      top: 45%;
+      right: -44px;
+      background-position: -162px -98px;
+      cursor: pointer; }
+    div.modal-story div.wrapper div.header {
+      display: flex;
+      position: relative;
+      width: 466px;
+      justify-content: flex-start;
+      padding-top: 26px; }
+      div.modal-story div.wrapper div.header img#profile {
+        width: 34px;
+        height: 34px;
+        border-radius: 17px;
+        cursor: pointer; }
+      div.modal-story div.wrapper div.header p.text {
+        font-size: 14px;
+        font-family: 'nsL';
+        color: #ffffff;
+        margin-top: -22px;
+        margin-left: 14px;
+        cursor: pointer; }
+      div.modal-story div.wrapper div.header p.time {
+        font-size: 14px;
+        font-family: 'nsL';
+        color: #b6b3b3;
+        margin-top: -22px;
+        margin-left: 10px; }
+      div.modal-story div.wrapper div.header p.user {
+        position: absolute;
+        left: 48px;
+        top: 52px;
+        font-size: 11px;
+        font-family: 'nsL';
+        color: #ffffff;
+        cursor: pointer; }
+      div.modal-story div.wrapper div.header a.declaration {
+        color: #ffffff;
+        cursor: pointer; }
+    div.modal-story div.wrapper div.header-line {
+      width: 466px;
+      height: 1px;
+      background-color: #ffffff;
+      margin: 12px 0px; }
+    div.modal-story div.wrapper div.story-content {
+      display: flex;
+      position: relative;
+      width: 466px;
+      background-color: #000000;
+      flex: 1;
+      align-items: center;
+      margin-bottom: 14px; }
+      div.modal-story div.wrapper div.story-content img#story {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; }
+      div.modal-story div.wrapper div.story-content svg.story-close {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: 8px;
+        right: -46px;
+        fill: #ffffff;
+        cursor: pointer; }
+
+div.modal-direct {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.65);
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  cursor: pointer; }
+  div.modal-direct div.wrapper {
+    display: flex;
+    width: 400px;
+    max-height: 400px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; }
+    div.modal-direct div.wrapper div.title {
+      display: flex;
+      position: relative;
+      width: 100%;
+      height: 43px;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #dbdbdb; }
+      div.modal-direct div.wrapper div.title span {
+        width: 352px;
+        font-size: 16px;
+        font-family: 'nsM';
+        text-align: center; }
+      div.modal-direct div.wrapper div.title svg {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        right: 14px;
+        fill: #262626; }
+    div.modal-direct div.wrapper div.frame {
+      padding: 8px 0px 8px 0px; }
+      div.modal-direct div.wrapper div.frame button {
+        display: flex;
+        width: 400px;
+        min-height: 48px;
+        font-size: 14px;
+        line-height: 1.5px;
+        text-align: left;
+        background-color: transparent;
+        align-items: center;
+        padding: 8px 16px;
+        cursor: pointer; }
+        div.modal-direct div.wrapper div.frame button div.direct {
+          background-image: url("../images/icon-two.png");
+          background-position: -52px -370px;
+          width: 24px;
+          height: 24px;
+          margin-left: 4px; }
+        div.modal-direct div.wrapper div.frame button div.facebook {
+          background-image: url("../images/icon-two.png");
+          background-position: -182px -370px;
+          width: 24px;
+          height: 24px;
+          margin-left: 4px; }
+        div.modal-direct div.wrapper div.frame button div.messenger {
+          background-image: url("../images/icon-two.png");
+          background-position: -346px -298px;
+          width: 24px;
+          height: 24px;
+          margin-left: 4px; }
+        div.modal-direct div.wrapper div.frame button div.twitter {
+          background-image: url("../images/icon-two.png");
+          background-position: -372px -298px;
+          width: 24px;
+          height: 24px;
+          margin-left: 4px; }
+        div.modal-direct div.wrapper div.frame button div.email {
+          background-image: url("../images/icon-two.png");
+          background-position: -130px -396px;
+          width: 24px;
+          height: 24px;
+          margin-left: 4px; }
+        div.modal-direct div.wrapper div.frame button div.link {
+          background-image: url("../images/icon-two.png");
+          background-position: -52px -396px;
+          width: 24px;
+          height: 24px;
+          margin-left: 4px; }
+        div.modal-direct div.wrapper div.frame button:focus {
+          outline: none; }
+        div.modal-direct div.wrapper div.frame button:hover {
+          background-color: #fcf9f9; }
+        div.modal-direct div.wrapper div.frame button:nth-child(1) {
+          border-top: none; }
+        div.modal-direct div.wrapper div.frame button:nth-child(7) {
+          font-family: 'nsM';
+          padding-left: 62px; }
+        div.modal-direct div.wrapper div.frame button span {
+          font-family: 'nsM';
+          padding-left: 18px; }

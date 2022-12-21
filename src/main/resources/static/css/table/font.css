@@ -1,0 +1,120 @@
+@charset "utf-8";
+/* MINDsLab. UX/UI Team. YMJ. 20190819 */
+
+/* Noto Sans */
+@font-face {
+    font-family:'Noto Sans KR';
+    font-style:normal;
+    font-weight:100;
+    src:local('Noto Sans KR Thin'), local('NotoSansKR-Thin'), url(../../font/NotoSansKR-Thin.otf) format('opentype');
+}
+@font-face {
+    font-family:'Noto Sans KR';
+    font-style:normal;
+    font-weight:300;
+    src:local('Noto Sans KR Light'), local('NotoSansKR-Light'), url(../../font/NotoSansKR-Light.otf) format('opentype');
+}
+@font-face {
+    font-family:'Noto Sans KR';
+    font-style:normal;
+    font-weight:400;
+    src:local('Noto Sans KR Regular'), local('NotoSansKR-Regular'), url(../../font/NotoSansKR-Regular.otf) format('opentype');
+}
+@font-face {
+    font-family:'Noto Sans KR';
+    font-style:normal;
+    font-weight:500;
+    src:local('Noto Sans KR Medium'), local('NotoSansKR-Medium'), url(../../font/NotoSansKR-Medium.otf) format('opentype');
+}
+@font-face {
+    font-family:'Noto Sans KR';
+    font-style:normal;
+    font-weight:700;
+    src:local('Noto Sans KR Bold'), local('NotoSansKR-Bold'), url(../../font/NotoSansKR-Bold.otf) format('opentype');
+}
+@font-face {
+    font-family:'Noto Sans KR';
+    font-style:normal;
+    font-weight:900;
+    src:local('Noto Sans KR Black'), local('NotoSansKR-Black'), url(../../font/NotoSansKR-Black.otf) format('opentype');
+}
+
+/* Spoqa Han Sans */
+@font-face {
+    font-family:'Spoqa Han Sans';
+    font-style:normal;
+    font-weight:100;
+    src: local('Spoqa Han Sans Thin'),
+    url(../../font/SpoqaHanSansThin.woff2) format('woff2'),
+    url(../../font/SpoqaHanSansThin.woff) format('woff'),
+    url(../../font/SpoqaHanSansThin.ttf) format('truetype');
+}
+@font-face {
+    font-family:'Spoqa Han Sans';
+    font-style:normal;
+    font-weight:300;
+    src: local('Spoqa Han Sans Light'),
+    url(../../font/SpoqaHanSansLight.woff2) format('woff2'),
+    url(../../font/SpoqaHanSansLight.woff) format('woff'),
+    url(../../font/SpoqaHanSansLight.ttf) format('truetype');
+}
+@font-face {
+    font-family:'Spoqa Han Sans';
+    font-style:normal;
+    font-weight:400;
+    src: local('Spoqa Han Sans Regular'),
+    url(../../font/SpoqaHanSansRegular.woff2) format('woff2'),
+    url(../../font/SpoqaHanSansRegular.woff) format('woff'),
+    url(../../font/SpoqaHanSansRegular.ttf) format('truetype');
+}
+@font-face {
+    font-family:'Spoqa Han Sans';
+    font-style:normal;
+    font-weight:700;
+    src: local('Spoqa Han Sans Bold'),
+    url(../../font/SpoqaHanSansBold.woff2) format('woff2'),
+    url(../../font/SpoqaHanSansBold.woff) format('woff'),
+    url(../../font/SpoqaHanSansBold.ttf) format('truetype');
+}
+
+/* Roboto */
+@font-face {
+    font-family:'Roboto';
+    font-style:normal;
+    font-weight:100;
+    src:url(../../font/Roboto-Thin.otf) format('opentype');
+    src:url(../../font/Roboto-Thin.woff) format('woff'),
+    url(../../font/Roboto-Thin.woff2) format('woff2');
+}
+@font-face {
+    font-family:'Roboto';
+    font-style:normal;
+    font-weight:300;
+    src:url(../../font/Roboto-Light.otf) format('opentype');
+    src:url(../../font/Roboto-Light.woff) format('woff'),
+    url(../../font/Roboto-Light.woff2) format('woff2');
+}
+@font-face {
+    font-family:'Roboto';
+    font-style:normal;
+    font-weight:400;
+    src:url(../../font/Roboto-Regular.otf) format('opentype');
+    src:url(../../font/Roboto-Regular.woff) format('woff'),
+    url(../../font/Roboto-Regular.woff2) format('woff2');
+}
+@font-face {
+    font-family:'Roboto';
+    font-style:normal;
+    font-weight:500;
+    src:url(../../font/Roboto-Medium.otf) format('opentype');
+    src:url(../../font/Roboto-Medium.woff) format('woff'),
+    url(../../font/Roboto-Medium.woff2) format('woff2');
+}
+@font-face {
+    font-family:'Roboto';
+    font-style:normal;
+    font-weight:700;
+    src:url(../../font/Roboto-Bold.otf) format('opentype');
+    src:url(../../font/Roboto-Bold.woff) format('woff'),
+    url(../../font/Roboto-Bold.woff2) format('woff2');
+}

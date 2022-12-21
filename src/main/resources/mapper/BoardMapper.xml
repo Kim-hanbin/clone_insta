@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.prd.web.board.mapper.BoardMapper">
+
+    <!-- ResultMap 작성-->
+    <resultMap id="BoardResultMap" type="kr.prd.web.board.model.BoardData$BoardVO">
+        <id property="boardId" column="board_id" />
+        <result property="userId" column="user_id" />
+        <result property="boardContents" column="board_contents" />
+        <result property="boardKategorie" column="board_kategorie" />
+        <result property="boardCreateTime" column="board_create_time" />
+        <result property="boardUpdateTime" column="board_update_time" />
+
+        <result property="profileName" column="profile_name" />
+    </resultMap>
+    
+    <resultMap id="BoardImgResultMap" type="kr.prd.web.board.model.BoardData$BoardImgVO">
+        <id property="imgId" column="img_id" />
+        <result property="boardId" column="board_id" />
+        <result property="fileName" column="file_name" />
+        <result property="fileType" column="file_type" />
+        <result property="fileSize" column="file_size" />
+    </resultMap>
+    
+    <!-- 게시물 등록과 파일 첨부 SQL -->
+    <insert id="insertBoard">
+        insert into boards(board_id,
+                           user_id,
+                           board_comments,
+                           board_comment_count,
+                           board_kategorie,
+                           board_create_time,
+                           board_update_time,
+                           file_name,
+                           file_type,
+                           file_size )
+    </insert>
+
+    <!-- 게시물 삭제 -->
+    <delete id="deleteBoard">
+        delete from boards where board_id=#{boardId}
+    </delete>
+
+    <!-- 모든 게시물 조회 SQL -->
+    <select id="selectBoardList" resultMap="BoardResultMap">
+        <![CDATA[
+            select
+                board_id,
+                B.user_id,
+                board_comments,
+                board_comment_count,
+                board_kategorie,
+                board_create_time,
+                board_update_time,
+                file_name,
+                file_type,
+                file_size
+                I.profile_name as profile_name
+                from boards B
+                left outer join board_imgs I
+                on(B.user_id = I.user_id)
+                where board_id != null
+                order by board_id desc;
+                ]]>
+    </select>
+
+    <!-- 좋아요 눌렀는지 안 눌렀는지 확인 -->
+    <select id="findLike" resultType="int">
+        select count(*)
+        from board_like
+        where board_id = #{boardId} and user_id = #{userId}
+    </select>
+
+    <insert id="likeUp">
+        insert into board_like (like_num, board_id , user_id)
+        values((select * from (select max(like_num)+1 from board_like) next), #{boardId},#{userId},1)
+    </insert>
+
+    <delete id="likeDown">
+        delete from board_like where board_id = #{boardId} and user_id = #{userId}
+    </delete>
+
+</mapper>

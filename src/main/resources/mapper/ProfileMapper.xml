@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.prd.web.profile.mapper.ProfileMapper">
+
+    <update id="profileFix" parameterType="profileFix">
+        update profile_info
+        <set>
+            profile_intro = #{profileIntro},
+            user_name = #{userName},
+            <if test="originFileName neq null and originFileName neq '' ">
+            origin_file_name = #{originFileName},
+            </if>
+            <if test="storedFileName neq null and storedFileName neq '' ">
+            stored_file_name = #{storedFileName}
+            </if>
+        </set>
+        where user_num = #{userNum}
+    </update>
+
+    <select id="getProfileView" parameterType="map" resultType="profileVO">
+        select user_num,
+               user_id,
+               user_name,
+               friend_counts,
+               content_counts,
+               profile_intro,
+               stored_file_name,
+               origin_file_name
+        from profile_info
+        where user_num = #{userNum}
+
+    </select>
+
+
+
+</mapper>

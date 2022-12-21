@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main_layout}">
+
+<head>
+    <meta charset="utf-8" />
+    <title>팀프로젝트(@Korea_IT_Academy)ㆍInstagram 사진 및 동영상</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/profile/profile.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header/header.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/profile/modal.css}">
+    <script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+    <script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
+
+</head>
+
+<div layout:fragment="content">
+<div class="header-line" style="margin-top:70px"></div>
+<div class="content">
+    <div class="container">
+        <div class="user-profile">
+            <img th:src="@{/images/logo.png}"/>
+            <div class="main_profile">
+                <div class="user-id">
+                    <p>Korea_IT_Academy</p>
+                    <button class="edit" id="setProfile" onclick="location.href='/profile/fix'">프로필 편집</button>
+                    <div class="preference">
+                        <!-- prettier-ignore -->
+                        <svg viewBox="0 0 48 48" onclick="getSetting()">
+                            <path clip-rule="evenodd"
+                                  d="M46.7 20.6l-2.1-1.1c-.4-.2-.7-.5-.8-1-.5-1.6-1.1-3.2-1.9-4.7-.2-.4-.3-.8-.1-1.2l.8-2.3c.2-.5 0-1.1-.4-1.5l-2.9-2.9c-.4-.4-1-.5-1.5-.4l-2.3.8c-.4.1-.8.1-1.2-.1-1.4-.8-3-1.5-4.6-1.9-.4-.1-.8-.4-1-.8l-1.1-2.2c-.3-.5-.8-.8-1.3-.8h-4.1c-.6 0-1.1.3-1.3.8l-1.1 2.2c-.2.4-.5.7-1 .8-1.6.5-3.2 1.1-4.6 1.9-.4.2-.8.3-1.2.1l-2.3-.8c-.5-.2-1.1 0-1.5.4L5.9 8.8c-.4.4-.5 1-.4 1.5l.8 2.3c.1.4.1.8-.1 1.2-.8 1.5-1.5 3-1.9 4.7-.1.4-.4.8-.8 1l-2.1 1.1c-.5.3-.8.8-.8 1.3V26c0 .6.3 1.1.8 1.3l2.1 1.1c.4.2.7.5.8 1 .5 1.6 1.1 3.2 1.9 4.7.2.4.3.8.1 1.2l-.8 2.3c-.2.5 0 1.1.4 1.5L8.8 42c.4.4 1 .5 1.5.4l2.3-.8c.4-.1.8-.1 1.2.1 1.4.8 3 1.5 4.6 1.9.4.1.8.4 1 .8l1.1 2.2c.3.5.8.8 1.3.8h4.1c.6 0 1.1-.3 1.3-.8l1.1-2.2c.2-.4.5-.7 1-.8 1.6-.5 3.2-1.1 4.6-1.9.4-.2.8-.3 1.2-.1l2.3.8c.5.2 1.1 0 1.5-.4l2.9-2.9c.4-.4.5-1 .4-1.5l-.8-2.3c-.1-.4-.1-.8.1-1.2.8-1.5 1.5-3 1.9-4.7.1-.4.4-.8.8-1l2.1-1.1c.5-.3.8-.8.8-1.3v-4.1c.4-.5.1-1.1-.4-1.3zM24 41.5c-9.7 0-17.5-7.8-17.5-17.5S14.3 6.5 24 6.5 41.5 14.3 41.5 24 33.7 41.5 24 41.5z"
+                                  fill-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="count">
+                    <div class="post">
+                        <a>게시물&nbsp;</a>
+                        <span>13</span>
+                    </div>
+                    <div class="follower">
+                        <a>친구&nbsp;</a>
+                        <span>2,495</span>
+                    </div>
+                </div>
+                <div class="introduce">
+                    <h1>팀플과제 프로필 페이지</h1>
+                    <span>프로필 소개란<br />
+                            <a class="hashtag">#헤쉬태그란</a>
+                        </span>
+                </div>
+            </div>
+        </div>
+        <div class="tag">
+            <div id="btn-posts" class="btn active">
+                <!-- prettier-ignore -->
+                <svg viewBox="0 0 48 48">
+                    <path
+                            d="M45 1.5H3c-.8 0-1.5.7-1.5 1.5v42c0 .8.7 1.5 1.5 1.5h42c.8 0 1.5-.7 1.5-1.5V3c0-.8-.7-1.5-1.5-1.5zm-40.5 3h11v11h-11v-11zm0 14h11v11h-11v-11zm11 25h-11v-11h11v11zm14 0h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11zm14 28h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11z"
+                            fill-rule="evenodd"></path>
+                </svg>
+                <span>게시물</span>
+            </div>
+        </div>
+        <div class="posts">
+            <img th:src="@{/images/logo.png}" style="width: 280px; height: 280px; cursor: pointer" onclick="getPost()">
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wrapper">
+            <div>
+                <span>소개</span>
+                <span>도움말</span>
+                <span>홍보 센터</span>
+                <span>API</span>
+                <span>채용 정보</span>
+                <span>개인정보처리방침</span>
+                <span>약관</span>
+                <span>위치</span>
+                <span>인기</span>
+                <span>계정</span>
+                <span>해시태그</span>
+                <span>언어</span>
+                <div class="blank"></div>
+                <p class="copyright">ⓒ 2020 INSTAGRAM FROM FACEBOOK</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal -->
+<!-- 프로필 편집 모달 -->
+<div class="setting" id="setting">
+    <div class="wrapper">
+        <button>비밀번호 변경</button>
+        <button>네임 태그</button>
+        <button>앱 및 웹사이트</button>
+        <button>알림</button>
+        <button>공개 범위 및 보안</button>
+        <button>로그인 활동</button>
+        <button>Instagram에서 보낸 이메일</button>
+        <button>문제 신고</button>
+        <button>로그아웃</button>
+        <button onclick="$('#setting').modal('hide');">취소</button>
+    </div>
+</div>
+
+<!-- 포스트 모달 -->
+<div class="modal-post" id="post_modal">
+    <!-- prettier-ignore -->
+    <svg class="post-close" fill="#ffffff" viewBox="0 0 48 48" onclick="$('#post_modal').modal('hide');"><path clip-rule="evenodd" d="M41.8 9.8L27.5 24l14.2 14.2c.6.6.6 1.5 0 2.1l-1.4 1.4c-.6.6-1.5.6-2.1 0L24 27.5 9.8 41.8c-.6.6-1.5.6-2.1 0l-1.4-1.4c-.6-.6-.6-1.5 0-2.1L20.5 24 6.2 9.8c-.6-.6-.6-1.5 0-2.1l1.4-1.4c.6-.6 1.5-.6 2.1 0L24 20.5 38.3 6.2c.6-.6 1.5-.6 2.1 0l1.4 1.4c.6.6.6 1.6 0 2.2z" fill-rule="evenodd"></path></svg>
+    <div class="wrapper">
+        <div class="image">
+            <img id="post-main" th:src="@{/images/logo.png}" />
+            <div class="heart-wrapper">
+                <div class="heart"></div>
+            </div>
+        </div>
+        <div class="post-content">
+            <div class="user">
+                <img th:src="@{/images/logo.png}">
+                <a onclick="location.href='/profile/home'">Korea_IT_Academy</a>
+                <span>ㆍ</span>
+                <div class="blank"></div>
+            </div>
+            <div class="rest">
+                <div class="text">
+                    <div class="top">
+                        <div class="posting">
+                            <p class="time"></p>
+                            <div class="content-wrapper">
+                                <span>여기가 포스트 컨텐츠 (글쓰기 란)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-container">
+                        <img th:src="@{/images/logo.png}">
+                        <div class="posting">
+                            <div>
+                                <p class="comment"><a class="id">아이디</a>댓글</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="like">
+                        <svg class="like-no" id="like-no" viewBox="0 0 48 48">
+                            <path
+                                    d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"
+                            ></path>
+                        </svg>
+                        <svg class="like-yes" id="like-yes" viewBox="0 0 48 48"><path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path></svg>
+                    </button>
+                </div>
+                <button class="likes-count">좋아요 1,351개</button>
+                <div class="post-date">2020년 6월 19일</div>
+                <div class="comment-wrapper">
+                    <textarea onkeyup="comment()"placeholder="댓글 달기..."></textarea>
+                    <button class="submit">게시</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function getSetting() {
+        $('#setting').modal('show');
+    }
+
+    function getPost() {
+        $('#post_modal').modal('show');
+    }
+
+    //post 좋아요 버튼
+    document.querySelector('svg.like-no').addEventListener('click', function (e) {
+        document.querySelector('svg.like-no').style.display = 'none';
+        document.querySelector('svg.like-yes').style.display = 'flex';
+    });
+
+    // post 좋아요취소 버튼
+    document.querySelector('svg.like-yes').addEventListener('click', function (e) {
+        document.querySelector('svg.like-yes').style.display = 'none';
+        document.querySelector('svg.like-no').style.display = 'flex';
+    });
+
+    // post textarea입력시 게시 버튼 색 변경
+    function comment() {
+        if (document.querySelector('textarea').value !== '') {
+            document.querySelector('button.submit').style.opacity = '1.0';
+        } else {
+            document.querySelector('button.submit').style.opacity = '0.3';
+        }
+    }
+
+</script>
+</div>
+</html>

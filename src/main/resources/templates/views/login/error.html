@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<title>로그인 에러</title>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div>
+<form action="/login/loginForm" id="frm" method="get">
+    <input type="hidden" id="errorMsg">
+</form>
+</div>
+</body>
+<script>
+    //시작함수
+    (function() {
+        const mm = "[[${msg}]]";
+        $('#errorMsg').val(mm);
+        const msg = document.querySelector('#errorMsg').value;
+        alert(msg);
+        const frm = document.querySelector('#frm');
+        frm.submit();
+    })();
+</script>
+</html>

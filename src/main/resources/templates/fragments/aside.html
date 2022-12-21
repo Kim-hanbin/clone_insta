@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div style="margin:0; width:400px; float:right;" th:fragment="aside">
+    <div class="asideWrap" style="margin: 75px; width:400px;">
+        <div th:replace="views/chat/chatRoom_view::chatmodal"></div>
+        <div class="asideBox" style="width:400px;background-color: grey;">
+            <div class="functionBtn">
+                <ul>
+                    <li><a class="home" href="http://localhost:9090/main/view2">🏠 홈</a></li>
+                    <li><button type="button" id="chatBtn" class="btn" data-toggle="modal" data-target="#exampleModalScrollable"
+                    onclick="openChatRoom()" style="text-decoration: none;padding: 10px;display: block;color: #000;
+                    font-weight: bold;font-family: ‘Noto Sans KR’, sans-serif, ’dotum’, ’돋움’,’Apple SD Gothic Neo’;">
+                        💌 메세지
+                    </button></li>
+                    <!--<li><a href="#">💌 메세지</a></li>-->
+                    <li><a href="http://localhost:9090/profile/home?userNum=2">📂 내 프로필</a></li>
+                    <li><a href="http://localhost:9090/main/posting">📝 포스팅</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        $(document).ready(function(){
+            console.log("initBtn");
+            initBtn();
+        });
+
+        function openChatRoom(){
+            console.log("openChatRoom");
+
+        }
+
+        function initBtn() {
+            const profileBtn = document.querySelector("profileBtn");
+            const homeBtn = document.querySelector("homeBtn");
+            const chatBtn = document.querySelector("chatBtn");
+
+            if (typeof profileBtn !== 'undifined') {
+                profileBtn.addEventListener('click', function (e) {
+                    console.log(e);
+                    console.log("profile");
+                    e.preventDefault(); //이벤트 동작 방지
+                    <!--$('#contents').load('/board/update.do?boardId=' + $('#boardId').val(),    null);-->
+                });
+            }
+
+            if (typeof homeBtn !== 'undifined') {
+                homeBtn.addEventListener('click', function (e) {
+                    console.log(e);
+                    console.log("home");
+                    e.preventDefault(); //이벤트 동작 방지
+                    <!--$('#contents').load('/board/update.do?boardId=' + $('#boardId').val(),    null);-->
+                });
+            }
+
+            if (typeof chatBtn !== 'undifined') {
+                chatBtn.addEventListener('click', function (e) {
+                    console.log(e);
+                    console.log("chat");
+                    e.preventDefault(); //이벤트 동작 방지
+                    <!--$('#contents').load('/board/update.do?boardId=' + $('#boardId').val(),    null);-->
+                });
+            }
+        }
+    </script>
+</div>
+
+</body>
+
+</html>

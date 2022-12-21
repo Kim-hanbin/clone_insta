@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/main_layout}">
+
+<head th:replace="layout/main_layout.html :: html-head">
+
+</head>
+
+<div layout:fragment="content" style="float:left;">
+  <link rel="stylesheet" th:href="@{/css/main/main.css}"/>
+
+  <nav style="margin-left:250px;">
+    <section class="feeds" style="width:600px;text-align:left;float:left;margin-top:70px;">
+      <article>
+        <div class="article-header">
+          <div class="profiles">
+            <div class="profiles-img">
+              <a href="#">
+                <img src="/images/logo.png" alt="story-people" />
+              </a>
+            </div>
+            <div class="id-text">
+              <span>Wecode_bootcamp</span>
+              <span>Wecode - 위코드</span>
+            </div>
+
+            <div class="article-header-menu">
+              <a href="#"><i class="fas fa-ellipsis-h"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contents">
+          <img src="/images/dog_picture.jpg">
+        </div>
+
+        <div class="article-bottom">
+          <div class="article-links">
+            <div class="buttons" style="font-size:25px">
+              <button class="far fa-heart"></button>
+              <button class="far fa-comment"></button>
+              <button class="fas fa-share-square"></button>
+            </div>
+            <div class="article-links-right" style="font-size:25px">
+              <button class="far fa-bookmark"></button>
+            </div>
+          </div>
+          <div class="article-bottom-like">
+            <div class="like-profile">
+                  <span class="article-bold"
+                  >dog_lover님 외 10명이 좋아합니다.</span
+                  >
+            </div>
+          </div>
+
+          <!-- 댓글 구분선 -->
+          <div class="article-bottom-texts">
+            <div class="comment-text">
+              <span class="article-bold">멍멍조아</span>
+              <span>헐.... 너무 귀여워♥</span>
+            </div>
+            <div class="comment-text">
+              <span class="article-bold">good_puppy and happy_jipsa</span>
+              <span>퍼가요~</span>
+            </div>
+            <div class="upload-time"><span>42분 전</span></div>
+
+            <button type='button' id="modal_btn" style="font-family:‘Noto Sans KR’, sans-serif, ’dotum’, ’돋움’,
+            ’Apple SD Gothic Neo’;">자세히 보기</button>
+
+            <!--모달 창 시작-->
+            <div class="modal_background" style="backdrop-filter: blur(1.5px);"></div>
+            <div class="modal" id="modal-dial">
+              <div class="modal_close">x</div>
+              <div class="modal_title">
+                <div class="modal_title_side"></div>
+                <div> 새 게시물 </div>
+                <div class="modal_title_side">
+                </div>
+              </div>
+
+              <nav class="modal_wrap" style="width:900px; align-content:center; margin:40px;" >
+                <nav>
+                  <img class="modal_contents" src="/images/dog_picture.jpg"
+                       style="width:450px; float:left">
+                </nav>
+
+                <nav class="modal_text_wrap" style="width:400px;text-align:left;float:right;">
+                  <article class="article-header" style="width:400px;text-align:left;">
+                    <div class="profiles">
+                      <div class="profiles-img">
+                        <a href="#">
+                          <img src="/people01.jpg" alt="story-people" />
+                        </a>
+                      </div>
+                      <div class="id-text">
+                        <span>Mung_Mung</span>
+                      </div>
+                      <div class="article-header-menu">
+                        <a href="#"><i class="fas fa-ellipsis-h"></i></a>
+                      </div>
+                    </div>
+                  </article>
+                  <div>우리집 강아지는 복슬강아지🐕</div>
+                  <div>오늘두 다섯끼 먹음🐷</div>
+                  <div>언니가 돈 많이 벌어올게💵</div>
+                  <div>#귀여워 #내새꾸 #시츄 #하루_5끼</div>
+                  <div class="article-bottom-texts">
+                    <div class="comment-text">
+                      <span class="article-bold">멍멍조아</span>
+                      <span>헐.... 너무 귀여워♥</span>
+                    </div>
+                    <div class="comment-text">
+                      <span class="article-bold">good_puppy and happy_jipsa</span>
+                      <span>퍼가요~</span>
+                    </div>
+                    <div class="comment-text">
+                      <span class="article-bold">meow_meow</span>
+                      <span>당장 간식으로 혼내주러 간다</span>
+                    </div>
+                    <div class="comment-text">
+                      <span class="article-bold">advertisement_good</span>
+                      <span>안녕하세요^^</span>
+                      <div>지나가다가 피드가 너무 맘에 들어 댓글 남겨요~</div>
+                      <div>혹시 디엠 확인 부탁드려도 될까요?❤</div>
+                    </div>
+                    <div class="comment-text">
+                      <span class="article-bold">kakaotalk_lover</span>
+                      <span>SNS 올릴 시간에 카톡 확인 좀 해라</span>
+                    </div>
+                    <div class="comment-text">
+                      <span class="article-bold">nyamnyam_good</span>
+                      <span>강아지 밥 뭐주시나요? 정보 공유좀 부탁드려요~^^</span>
+                    </div>
+                    <div class="article-bottom"style="width:400px;text-align:left;">
+                      <div class="article-links">
+                        <div class="buttons" style="font-size:25px">
+                          <button class="far fa-heart"></button>
+                          <button class="far fa-comment"></button>
+                          <button class="fas fa-share-square"></button>
+                        </div>
+                        <div class="article-links-right" style="font-size:25px">
+                          <button class="far fa-bookmark"></button>
+                        </div>
+                      </div>
+                      <div class="article-bottom-like">
+                        <div class="like-profile">
+                          <span class="article-bold">dog_lover님 외 10명이 좋아합니다.</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="upload-time" style="width:400px;text-align:left;"><span>42분 전</span></div>
+                    <div class="article-bottom-comments" style="width:400px;text-align:left;">
+                      <form>
+                        <div class="emotion"><i class="far fa-smile"></i></div>
+                        <textarea
+                                id="modal_comments-id"
+                                placeholder="댓글 달기..."
+                                autocomplete="off"
+                                autocorrect="off">
+                                                                        </textarea>
+                        <button id="modal_comments-submit" type="submit" disabled="true" style="font-size: 12px;text-align: center;">
+                          게시
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </nav>
+              </nav>
+            </div>
+
+            <!-- 모달 창 끝-->
+
+            <!-- <div class="comment"> -->
+            <!-- </div> -->
+
+            <!-- 구분선 -->
+
+          </div>
+          <div class="article-bottom-comments">
+            <form>
+              <div class="emotion"><i class="far fa-smile"></i></div>
+              <textarea
+                      id="comments-id"
+                      placeholder="댓글 달기..."
+                      autocomplete="off"
+                      autocorrect="off"
+              ></textarea>
+              <button id="comments-submit" type="submit" disabled="true" style="font-size: 12px;text-align: center;">
+                게시
+              </button>
+            </form>
+          </div>
+        </div>
+      </article>
+  </section>
+  </nav>
+  <script>
+
+    const modal = document.querySelector('#modal-dial');
+    const modal_background = document.querySelector('.modal_background')
+
+
+
+    //Show modal
+    document.querySelector('#modal_btn').addEventListener('click', () => {
+      open()
+    })
+
+    //Hide modal
+    document.querySelector('.modal_close').addEventListener('click', () => {
+      close()
+    })
+
+    //Hide modal
+    window.addEventListener('click', (e) => {
+      e.target === modal_background ?  close() : false
+    })
+    function close(){
+      modal.classList.remove('show-modal')
+      modal_background.classList.remove('show-modal')
+    }
+    function open(){
+      console.log("오픈");
+      console.log(modal)
+      modal.classList.add('show-modal')
+      modal_background.classList.add('show-modal')
+    }
+  </script>
+</div>
+</html>

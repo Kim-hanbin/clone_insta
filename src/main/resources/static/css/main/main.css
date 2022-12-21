@@ -1,0 +1,381 @@
+@charset "utf-8";
+
+body{
+    margin: 0 auto;
+}
+
+button{
+    all: unset;
+}
+
+/* header start */
+header{
+    height : 76px;
+    width: 100%;
+}
+
+
+.align-center { text-align: center; }
+
+.main-navigation {
+    position: fixed;
+    height: 76px;
+    width: 100%;
+    border-bottom: 1px solid #e6e6e6;
+    background-color: #fff;
+    font-family: ‘Noto Sans KR’, sans-serif, ’dotum’, ’돋움’,
+    ’Apple SD Gothic Neo’;
+}
+
+
+.main-navigation .nav-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1000px;
+    height: 76px;
+    margin: 0 auto;
+}
+
+.main-navigation .nav-box .logo {
+    display: flex;
+}
+
+.main-navigation .nav-box .logo i {
+    margin-right: 10px;
+    font-size: 25px;
+}
+
+.main-navigation .nav-box .logo h1 {
+    font-size: 25px;
+}
+.search-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #949BA0;
+    padding: 10px;
+    border-radius: 40px;
+}
+.search-btn {
+    color: #EDEDED;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #949BA0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-txt {
+    float: left;
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    line-height: 40px;
+    width: 0;
+    transition: 0.5s;
+    font-family: ‘Noto Sans KR’, sans-serif, ’dotum’, ’돋움’,
+    ’Apple SD Gothic Neo’;
+}
+
+.search-box:hover > form .search-txt {
+    width: 200px;
+}
+
+.search-box:hover > form .search-btn {
+    background: #464E54;
+}
+/* header end */
+
+/* section start */
+.feeds {
+    width: 600px;
+    height: auto;
+    background-color: #fff;
+    border: 1.5px solid #e6e6e6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+article {
+    width: 600px;
+    height: auto;
+}
+
+article .article-header {
+}
+
+article .article-header .profiles {
+    display: flex;
+    align-items: center;
+    padding: 15px 18px;
+}
+
+article .article-header .profiles .profiles-img {
+    margin-right: 10px;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+article .article-header .profiles .profiles-img a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+article .article-header .profiles .id-text {
+    font-weight: bold;
+}
+
+article .article-header .profiles .article-header-menu {
+    margin-left: auto;
+}
+
+article .contents {
+    width: 100%;
+    margin: 0 auto;
+    height: 500px;
+    overflow: hidden;
+    border: 1px solid #e6e6e6;
+    outline: 1px solid #e6e6e6;
+}
+
+article .contents img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+article .article-bottom {
+    width: 600px;
+}
+
+article .article-bottom .article-links {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+}
+
+article .article-bottom .article-links-left i {
+    font-size: 25px;
+    font-weight: normal;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+article .article-bottom .article-links-left i:last-child {
+    margin-right: 0;
+}
+
+article .article-bottom .article-links-right i {
+    font-size: 25px;
+    font-weight: normal;
+    width: 25px;
+    height: 25px;
+}
+
+article .article-bottom .article-bottom-like {
+    width: 100%;
+    padding: 10px;
+}
+
+article .article-bottom .article-bottom-like .like-profile .article-bold {
+    font-weight: bold;
+}
+
+article .article-bottom .article-bottom-texts {
+    padding: 10px;
+    width: 100%;
+}
+
+article .article-bottom .article-bottom-texts > div {
+    margin-bottom: 5px;
+}
+
+article .article-bottom .article-bottom-texts .article-bold {
+    font-weight: bold;
+}
+
+article .article-bottom .article-bottom-texts .upload-time span {
+    color: #9a9a9a;
+}
+
+article .article-bottom .article-bottom-comments {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dbdbdb;
+}
+
+article .article-bottom .article-bottom-comments form {
+    display: flex;
+    align-items: center;
+}
+
+article .article-bottom .article-bottom-comments form .emotion {
+    width: 5%;
+    height: 20px;
+}
+
+article .article-bottom .article-bottom-comments form .emotion i {
+    font-size: 20px;
+}
+
+article .article-bottom .article-bottom-comments form textarea {
+    width: 85%;
+    height: 30px;
+    outline: none;
+    border: none;
+    resize: none;
+    line-height: 25px;
+    text-indent: 5px;
+}
+
+article .article-bottom .article-bottom-comments form button {
+    width: 10%;
+    height: 30px;
+    outline: none;
+    border: none;
+    font-size:5px;
+    background-color: #0095f6;
+}
+
+article .article-bottom .article-bottom-comments form [type='submit']:disabled {
+    background-color: #cbddf7;
+}
+
+
+.btn_groups {
+    color: #EDEDED;
+    float: right;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #949BA0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+}
+
+/* 모달 시작 */
+
+.modal.show {
+    display: block;
+}
+
+.modal {
+    width: 1000px;
+    height: 700px;
+    position: absolute;
+    border: 2px solid black;
+    top: calc(55vh);
+    left: calc(50vw);
+    transform: translate(-50%, -50%);
+    margin: 0px 0px 0px 0px;
+    background: #ffffff;
+    z-index: 2;
+    display : none;
+}
+
+.modal_title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.modal_title_side{
+    margin: 5px;
+    flex: 0 0 40px;
+    text-align: center;
+}
+
+.modal_image{
+    outline: 2px dashed black ;
+    outline-offset:-10px;
+    transition: all .15s ease-in-out;
+    width: 798px;
+    height: 548px;
+    text-align: center;
+    line-height: 548px;
+}
+.modal.show-modal {
+
+    display: block;
+}
+.modal_background.show-modal {
+
+    display: block;
+}
+.modal_background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0, 0,0, 0.5);
+    top:0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    display : none;
+}
+.modal_close {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.modal_close .closeImg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+/* 모달 끝 */
+
+/* aside start*/
+ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    width: 500px;
+    background: #ffffff;
+    height: 100%;
+    overflow: auto;
+    position: fixed;
+    font-family: ‘Noto Sans KR’, sans-serif, ’dotum’, ’돋움’,
+    ’Apple SD Gothic Neo’;
+}
+
+li a {
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    color: #000;
+    font-weight: bold;
+    font-family: ‘Noto Sans KR’, sans-serif, ’dotum’, ’돋움’,
+    ’Apple SD Gothic Neo’;
+}
+
+li a.home {
+    background : #333;
+    color: #fff;
+}
+/* aside end*/
+/* section end */

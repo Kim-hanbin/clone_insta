@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<title>로그인 에러</title>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div>
+  <form action="/profile/home" id="frm" method="get">
+    <input type="hidden" id="userNum" name="userNum" th:value="${userNum}">
+  </form>
+</div>
+</body>
+<script>
+  //시작함수
+  (function() {
+    const frm = document.querySelector('#frm');
+    frm.submit();
+
+  })();
+</script>
+</html>
